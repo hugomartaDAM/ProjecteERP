@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GestorFest</title>
+  <link rel="shortcut icon" href="img/icon/icono.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">DESCRIPCIÓ I OBJECTIUS</a></li>
+        <li><a href="cronograma.html">CRONOGRAMA</a></li>
+        <li><a href="bd.html">DISSENY BD</a></li>
+        <li><a href="uml.html">DISSENY UML</a></li>
+        <li><a href="manual.html">MANUAL BÀSIC D'ÚS</a></li>
+        <li><a href="">INCIDENTS I PROBLEMES</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="regles">
+      <h1>REGLES D'INTEGRITAT</h1>
+      <p>El primer problema que vaig tenir van ser les regles d'integritat per algunes taules de la meva base de dades.
+      </p>
+      <p>Alhora d'afegir un organitzador i que després aquest organitzador crei un event, els dos IDs els poso en una
+        taula anomenada "Organitzar". Aquesta taula recull les dues IDs i em serveix per exemple alhora de mostrar els
+        events que ha fet cada organitzador.</p>
+      <p>Si després de crear un event, el vols eliminar, has de posar una regla d'integritat en la taula "Organitzar"
+        perquè sino et salta un error relacionat amb la clau al·liena.</p>
+    </div>
+    <div class="model">
+      <h1>PROBLEMES AMB L'INJECCIÓ DEL MODEL</h1>
+      <p>Uns dels problemes que he tingut alhora d'implementar les funcions de SQL i vincular-les a l'interfície gràfica
+        va ser la injecció del model. El procediment que cal seguir per a injectar el mateix model en els dos
+        controladors és el següent:</p>
+      <ol>
+        <li>Crear una variable "Model" i una funció "Injecta" dintre dels controladors, passant per paràmetre un model i
+          assignant-lo en el model creat dintre del controlador.</li>
+        <li>Anar al "App.java" i dintre de la funció "start" declarar el model i els controladors.</li>
+        <li>Inicializar aquestes variables.</li>
+        <li>Cridar a la funció "Injecta" dels controladors des del "App.java".</li>
+        <li>Per últim, en la funció "loadFXML" dintre del "App.java", inserim el següent codi:<br><br>
+          <code>
+fxmlLoader.setControllerFactory(controllerType -&gt; {<br>
+if (controllerType == PrimaryController.class) {<br>
+  return nomControlador;<br>
+}<br>
+if (controllerType == SecondaryController.class) {<br>
+  return nomControlador;<br>
+}<br>
+  return null;<br>
+});<br>
+</code><br>
+        </li>
+        <li>Per últim, si mostrem tot el codi que hem tingut que afegir, es veuria de la següent manera:<br><br>
+          <code>
+            @Override<br>
+            public void start(Stage stage) throws IOException {<br>
+              model = new Model();<br>
+              controlador1 = new PrimaryController();<br>
+              controlador2 = new SecondaryController();<br>
+              controlador1.injecta(model);<br>
+              controlador2.injecta(model);<br>
+              scene = new Scene(loadFXML("menu"), 750, 500);<br>
+              stage.setScene(scene);<br>
+              stage.show();<br>
+            }<br>
+            static void setRoot(String fxml) throws IOException {<br>
+              scene.setRoot(loadFXML(fxml));<br>
+            }<br>
+            private static Parent loadFXML(String fxml) throws IOException {<br>
+              FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));<br>
+              fxmlLoader.setControllerFactory(controllerType -&gt; {<br>
+              if (controllerType == PrimaryController.class) {<br>
+                return controlador1;<br>
+              }<br>
+              if (controllerType == SecondaryController.class) {<br>
+                return controlador2;<br>
+              }<br>
+                return null;<br>
+              });<br>
+                return fxmlLoader.load();<br>
+            }<br>
+          </code><br>
+        </li>
+      </ol>
+      <p>El problema que m'he trobat és que la injecció només funciona al començar el programa, però si després canvio
+        de controladors, el problema que em donava al cridar a les funcions del model de nou és que ja no estava
+        injectat, per tant em donava un error de que el model era "null".</p>
+      <p>Una de les solucions que m'ha funcionat és crear una funció "get" del model en el "App.java" i, en els
+        controladors, relacionar dintre de la funció "initialize" la variable model del controlador amb el "get" del
+        model del "App.java".</p>
+    </div>
+    <div class="ids">
+      <h1>CANVIS EN LES CREACIONS DELS IDS</h1>
+      <p>Un altre problema que he trobat ha sigut la creació de les IDs en els events i les reserves.<br>Al principi les
+        vaig assignar com a String i que la persona que las crei sigui l'organitzador, en aquest cas pels events, i
+        l'usuari per les reserves.<br>Un exemple podria ser "EV001" i "RE001".</p>
+      <p>Però després vaig pensar que per a buscar-les seria més fàcil si s'autoassignaran automàticament començant pel
+        número 1.<br>Vaig tindre que modificar l'estructura de les classes i constructors en Java i l'estructura de les
+        taules en la base de dades per convertir-les en INT, i així realitzar aquest canvi.<br>De manera que s'assignen
+        en la base de dades gràcies a la funció "AUTO-INCREMENT" i agafar la clau primària per a assignar-la en la
+        classe de Java.</p>
+    </div>
+  </main>
+</body>
+
+</html>

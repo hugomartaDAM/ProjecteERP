@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GestorFest</title>
+  <link rel="shortcut icon" href="img/icon/icono.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">DESCRIPCIÓ I OBJECTIUS</a></li>
+        <li><a href="cronograma.html">CRONOGRAMA</a></li>
+        <li><a href="">DISSENY BD</a></li>
+        <li><a href="uml.html">DISSENY UML</a></li>
+        <li><a href="manual.html">MANUAL BÀSIC D'ÚS</a></li>
+        <li><a href="incidentes.html">INCIDENTS I PROBLEMES</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="indice">
+      <p><strong>ÍNDEX</strong></p>
+      <a href="#bd">
+        <p>
+          <ion-icon name="caret-forward-outline"></ion-icon> <strong>Base de dades</strong>
+        </p>
+      </a>
+      <a href="#mc">
+        <p>
+          <ion-icon name="caret-forward-outline"></ion-icon> <strong>Model conceptual. Diagrama Entitat -
+            Relació</strong>
+        </p>
+      </a>
+      <a href="#ml">
+        <p>
+          <ion-icon name="caret-forward-outline"></ion-icon> <strong>Model Logic -
+            Relacional</strong>
+        </p>
+      </a>
+      <a href="#mf">
+        <p>
+          <ion-icon name="caret-forward-outline"></ion-icon> <strong>Disseny físic</strong>
+        </p>
+      </a>
+      <a href="#pbd">
+        <p>
+          <ion-icon name="caret-forward-outline"></ion-icon> <strong>Proves en la base
+            de dades</strong>
+        </p>
+      </a>
+    </div>
+    <div class="base_datos" id="bd">
+      <h1>BASE DE DADES</h1>
+      <p>La base de dades constarà de les següents taules:</p>
+      <ul>
+        <li>Organitzador</li>
+        <li>Event</li>
+        <li>Usuari</li>
+        <li>Reserva</li>
+      </ul>
+      <p>
+        Una de les relacions m-n serà entre els organitzadors i els events, on
+        un event pot ser hostejat per més d'un organitzador, i un organitzador
+        pot crear més d'un event alhora Una de les relacions 1-n serà la dels
+        usuaris i les reserves, ja que una reserva només pertany a un usuari,
+        però un usuari pot fer més d'una reserva.
+      </p>
+    </div>
+    <div class="modelo_conceptual" id="mc">
+      <h1>MODEL CONCEPTUAL. DIAGRAMA ENTITAT - RELACIÓ</h1>
+      <p>
+        El diagrama entitat-relació serveix per a fer el disseny de la base de
+        dades, de manera que pots visualitzar les entitats, relacions i
+        atributs dintre d’un sistema d’informació. He dissenyat el diagrama
+        entitat-relació del meu sistema de gestió d’events. L’aplicació que he
+        fet servir per al disseny és Draw.io.
+      </p>
+      <p>El diagrama consta amb:</p>
+      <img src="img/GestioEvents.png" alt="Imagen Modelo Conceptual">
+      <ul>
+        <li>Entitats i atributs
+          <ul>
+            <li>Organitzador
+              <ul>
+                <li><u>NIF</u></li>
+                <li>Nom</li>
+                <li>Nom de l'organització</li>
+                <li>Gènere</li>
+                <li>Correu</li>
+                <li>Telèfon</li>
+              </ul>
+            </li>
+            <li>Event
+              <ul>
+                <li><u>Identificador event</u></li>
+                <li>Nom</li>
+                <li>Descripció</li>
+                <li>Ubicació</li>
+                <li>Data inici</li>
+                <li>Data final</li>
+                <li>Preu</li>
+                <li>Nº de reserves</li>
+              </ul>
+            </li>
+            <li>Reserva
+              <ul>
+                <li><u>Identificador reserva</u></li>
+                <li>NIF usuari</li>
+                <li>Nom usuari</li>
+                <li>Preu reserva</li>
+                <li>Data inici event</li>
+                <li>Data final event</li>
+              </ul>
+            </li>
+            <li>Usuari
+              <ul>
+                <li><u>NIF</u></li>
+                <li>Nom</li>
+                <li>Gènere</li>
+                <li>Data naixement</li>
+                <li>Correu electrònic</li>
+                <li>Telèfon</li>
+                <li>Contrasenya</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Relacions
+          <ul>
+            <li>Organitzador - Event
+              <p>
+                La relació és <strong>m:n</strong> perquè un organitzador pot
+                organitzar més d’un event i un event pot estar organitzar per més
+                d’un organitzador.
+              </p>
+            </li>
+            <li>Event - Reserva
+              <p>
+                La relació és <strong>1:n</strong> perquè un event pot tenir més
+                d’una reserva i una reserva només pot pertànyer a un event.
+              </p>
+            </li>
+            <li>Reserva - Usuari
+              <p>
+                La relació és <strong>1:n</strong> perquè una reserva només
+                pertany a un usuari però un usuari pot fer més d’una reserva.
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="modelo_logico" id="ml">
+      <h1>MODEL LOGIC - RELACIONAL</h1>
+      <p>
+        El model logic-relacional serveix per a representar l’estructura d’una
+        base de dades relacional. Mostra com estan relacionats les dades
+        dintre de la base de dades i com es relacionen entre elles. En aquest
+        cas he fet la transformació del diagrama E-R anterior:
+      </p>
+      <p>
+        <strong>ORGANITZADOR</strong> (<u>NIF_Organitzador</u>, Nom,
+        Nom_Organització, Gènere, Correu, Telèfon)
+      </p>
+      <p>
+        <strong>EVENT</strong> (<u>ID_Event</u>, Nom, Descripció, Ubicació,
+        Data_Inici, Data_Fi, Preu, Nº_Reserves)
+      </p>
+      <p><strong>ORGANITZAR</strong> (<u>NIF_Organitzador, ID_Event</u>)</p>
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;ORGANITZAR.NIF_Organitzador és clau al·liena
+        de ORGANITZADOR
+      </p>
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;ORGANITZAR.ID_Event és clau al·liena de EVENT
+      </p>
+      <p>
+        <strong>USUARI</strong> (<u>NIF_Usuari</u>, Nom, Gènere,
+        Data_Naixement, Correu, Telèfon, Contrasenya)
+      </p>
+      <p>
+        <strong>RESERVA</strong> (<u>ID_Reserva</u>, NIF_Usuari, Nom_Usuari,
+        Preu_Reserva, Data_Inici_Event, Data_Fi_Event, ID_Event, NIF_Usuari)
+      </p>
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;RESERVA.ID_Event és clau al·liena de EVENT
+      </p>
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;RESERVA.NIF_Usuari és clau al·liena de USUARI
+      </p>
+    </div>
+    <div class="modelo_fisico" id="mf">
+      <h1>DISSENY FÍSIC</h1>
+      <p>
+        El disseny físic per a descriure la estructura d’una base de dades
+        relacional. Defineix com s’organitzen i emmagatzemen les dades en el
+        sistema de gestió de base de dades. A continuació mostro el disseny
+        físic del sistema de gestió d’events:
+      </p>
+      <p>
+        CREATE TABLE Organitzador ( <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;NifOrganitzador VARCHAR(9) PRIMARY KEY, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Nom VARCHAR(50), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;NomOrganització VARCHAR(50), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Gènere VARCHAR(10), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Correu VARCHAR(100), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Telèfon VARCHAR(20) <br>
+        );
+      </p>
+
+      <p>
+        CREATE TABLE Evento ( <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;IdEvent VARCHAR(20) PRIMARY KEY, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Nom VARCHAR(100), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Descripcio VARCHAR(500), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Ubicacio VARCHAR(100), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;DataInici DATE, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;DataFi DATE, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Preu DECIMAL(10,2), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;NºReserves INT(11) <br>
+        );
+      </p>
+
+      <p>
+        CREATE TABLE Organitzar ( <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;NifOrganitzador VARCHAR(20), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;IdEvent VARCHAR(20), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;PRIMARY KEY (NifOrganitzador, IdEvent), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;FOREIGN KEY (NifOrganitzador) REFERENCES
+        Organitzador(NifOrganitzador) ON UPDATE CASCADE ON DELETE CASCADE,
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;FOREIGN KEY (IdEvent) REFERENCES
+        Evento(IdEvent) ON UPDATE CASCADE ON DELETE CASCADE <br>
+        );
+      </p>
+
+      <p>
+        CREATE TABLE Usuari ( <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;NifUsuari VARCHAR(9) PRIMARY KEY, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Nom VARCHAR(50), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Genere VARCHAR(25), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;DataNaixement DATE, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Correu VARCHAR(100), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Telefon VARCHAR(9), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Contrasenya VARCHAR(50) <br>
+        );
+      </p>
+
+      <p>
+        CREATE TABLE Reserva ( <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;IdReserva VARCHAR(20) PRIMARY KEY, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;NifUsuari VARCHAR(9), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;NomUsuari VARCHAR(50), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;PreuReserva DECIMAL(10,2), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;DataIniciEvent DATE, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;DataFiEvent DATE, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;IdEvent VARCHAR(20), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Ubicacio VARCHAR(100), <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;FOREIGN KEY (IdEvent) REFERENCES
+        Evento(IdEvent) ON UPDATE CASCADE ON DELETE CASCADE, <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;FOREIGN KEY (NifUsuari) REFERENCES
+        Usuari(NifUsuari) ON UPDATE CASCADE ON DELETE CASCADE <br>
+        );
+      </p>
+      <img src="img/DiseñoBD.png" alt="Imatge Disseny BD">
+    </div>
+    <div class="pruebas_bd" id="pbd">
+      <h1>PROVES EN LA BASE DE DADES</h1>
+      <p>
+        Una vegada hem inserit les dades anteriors en una base de dades, podem
+        començar a fer comandes per a comprovar el funcionament de la nostra
+        estructura:
+      </p>
+      <h2>Afegir organitzadors</h2>
+      <code>
+        INSERT INTO organitzador (NifOrganitzador, Nom, NomOrganització, Gènere, Correu, Telèfon) VALUES
+        (57648871C, 'Julian Perez', 'LOS 40', 'Hombre', 'jperez@ejemplo.com', '671829124'),
+        (91826722H, 'Maria Becerra', 'Big Data', 'Mujer', 'mbecerra@ejemplo.com', '612754882');
+      </code>
+      <h2>Afegir events en la taula events i organitzar</h2>
+      <code>
+        INSERT INTO evento (IdEvent, Nom, Descripcio, Ubicacio, DataInici, DataFi, Preu, NºReserves) VALUES
+        (1, 'Big Data World 2024', 'El mayor encuentro nacional para profesionales especializados.
+        En Big Data World podrás conocer lo último del sector y exponer tus estrategias junto a más de 400 empresas líderes del mercado.
+        Una forma perfecta de conectar con personas interesantes que te ayudarán a impulsar tu carrera profesional.',
+        'Madrid', '2024-10-16', '2024-10-18', 15.00, 149),
+        (2, 'LOS 40 Summer Live', 'Más de 40 nombres, entre artistas emergentes y estrellas de primerísimo nivel,
+        unirán su talento en un punto de encuentro que ya es un plan de verano ineludible.
+        Reúnete con tu familia o con tus amigos, vive una puesta de sol diferente esta temporada estival y crea recuerdos inolvidables con LOS40 Summer Live.'
+        'Madrid', '2024-07-06', '2024-08-08', 50.00, 999),
+        (3, 'LOS 40 Summer Live', 'Más de 40 nombres, entre artistas emergentes y estrellas de primerísimo nivel,
+        unirán su talento en un punto de encuentro que ya es un plan de verano ineludible.
+        Reúnete con tu familia o con tus amigos, vive una puesta de sol diferente esta temporada estival y crea recuerdos inolvidables con LOS40 Summer Live.'
+        'Cádiz', '2024-07-06', '2024-08-08', 50.00, 500),
+        (4, 'Big Data World 2024', 'El mayor encuentro nacional para profesionales especializados.
+        En Big Data World podrás conocer lo último del sector y exponer tus estrategias junto a más de 400 empresas líderes del mercado.
+        Una forma perfecta de conectar con personas interesantes que te ayudarán a impulsar tu carrera profesional.',
+        'Barcelona', '2024-10-19', '2024-10-20', 15.00, 150);
+
+        INSERT INTO organitzar (NifOrganitzador, IdEvent) VALUES
+        (57648871C, 2),
+        (57648871C, 3),
+        (91826722H, 1),
+        (91826722H, 4);
+      </code>
+      <h2>Afegir usuaris</h2>
+      <code>
+        INSERT INTO usuari (NifUsuari, Nom, Genere, DataNaixement, Correu, Telefon, Contrasenya) VALUES
+        (72312351G, 'Laura Pons', 'Mujer', '2002-09-06', 'lpons@ejemplo.com', '645271309', '1234'),
+        (91886012A, 'Paco Gonzalez', 'Hombre', '1992-03-06', 'pgonzalez@ejemplo.com', '651742640', '1234');
+      </code>
+      <h2>Afegir reserves</h2>
+      <code>
+        INSERT INTO reserva (IdReserva, NifUsuari, NomUsuari, PreuReserva, DataIniciEvent, DataFiEvent, IdEvent, Ubicacio) VALUES
+        (1, '91886012A', 'Paco Gonzalez', 50.00, '2024-07-11', '2024-07-26', 2, 'Madrid'),
+        (2, '72312351G', 'Laura Pons', 15.00, '2024-10-16', '2024-10-17', 1, 'Madrid');
+      </code>
+    </div>
+  </main>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

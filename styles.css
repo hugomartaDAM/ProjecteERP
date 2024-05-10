@@ -1,0 +1,273 @@
+body {
+  background-color: #f0f0f0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #489cf7;
+  text-align: center;
+  width: 100%;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-flex;
+  justify-content: center;
+  width: 230px;
+  padding: 15px 0px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+nav ul li:hover {
+  background-color: #52a6ff;
+}
+
+nav ul li:hover a {
+  transform: scale(1.2);
+}
+
+main {
+  text-align: center;
+  padding: 50px 0;
+}
+
+h1 {
+  background: linear-gradient(to right, #0062ff, #ffffff);
+  background-clip: text;
+  color: transparent;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  color: #858585;
+  background-color: #fff;
+  padding: 5px;
+}
+
+.texto {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  max-width: 750px;
+  margin: 20px auto;
+}
+
+.texto p {
+  line-height: 25px;
+  font-size: 15px;
+}
+
+.tabla-container {
+  padding-top: 120px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tableizer-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.tableizer-table th,
+.tableizer-table td {
+  border: 2px solid #212121;
+  text-align: center;
+  padding: 8px;
+}
+
+.tableizer-firstrow th {
+  background-color: #489cf7;
+}
+
+.tableizer-table tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.tableizer-table tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.indice {
+  width: 430px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+.indice a {
+  color: #000;
+  text-decoration: none;
+}
+
+.base_datos {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+}
+
+.modelo_conceptual {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+}
+
+.modelo_conceptual img {
+  width: 1000px;
+  background-color: #fff;
+  padding: 10px;
+  display: block;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+}
+
+.modelo_logico {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+}
+
+.modelo_fisico {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+}
+
+.modelo_fisico img {
+  width: 1000px;
+  background-color: #fff;
+  padding: 10px;
+  display: block;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+}
+
+.pruebas_bd {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+}
+
+.diagrama_clases {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+}
+
+.diagrama_clases img {
+  width: 1000px;
+  background-color: #fff;
+  padding: 10px;
+  display: block;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+}
+
+.diagrama_casos {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+}
+
+.diagrama_casos img {
+  width: 1000px;
+  background-color: #fff;
+  padding: 10px;
+  display: block;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+}
+
+.texto2 {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  max-width: 1200px;
+  margin: 20px auto;
+  line-height: 2;
+}
+
+.texto2 ul li {
+  color: #0062ff;
+}
+
+.texto2 p,
+.texto2 h2,
+.texto2 h3 {
+  text-align: left;
+  color: #000;
+}
+
+.texto2 h2,
+.texto2 h3 {
+  background: linear-gradient(to right, #0062ff, #ffffff);
+  background-clip: text;
+  color: transparent;
+}
+
+.texto2 img {
+  width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+.texto2 .small {
+  width: 250px;
+}
+
+.texto2 .important {
+  color: red;
+  font-weight: bold;
+}
+
+.regles {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.model {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.ids {
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: left;
+  line-height: 1.5;
+}
